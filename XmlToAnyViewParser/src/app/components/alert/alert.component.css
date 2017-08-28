@@ -1,0 +1,10 @@
+:host .alert-conatiner {
+    position: fixed;
+    top: 60px;
+    right: 8px;
+    z-index: 1;
+  }
+  :host .alert {
+    margin-bottom: 8px;
+  }
+  

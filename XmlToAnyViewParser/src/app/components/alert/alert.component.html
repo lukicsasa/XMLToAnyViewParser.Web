@@ -1,0 +1,3 @@
+<div class="alert-conatiner">
+	<ngb-alert *ngFor="let alert of alerts" [type]="alert.type || 'success'" (close)="close(alert)">{{alert.detail}}</ngb-alert>
+</div>
