@@ -6,5 +6,5 @@
 export const environment = {
   production: false,
   max_file_size: 2097152,
-  base_uri: 'http://localhost:3000/'
+  base_uri: 'http://localhost:52042/api/'
 };

@@ -15,6 +15,7 @@ import { RequestService } from "./services/request.service";
 import { SessionService } from "./services/session.service";
 import { CookieService } from "angular2-cookie/services/cookies.service";
 import { NotfoundComponent } from "./components/notfound/notfound.component";
+import { RegisterComponent } from './components/register/register.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { NotfoundComponent } from "./components/notfound/notfound.component";
     HeaderComponent,
     AlertComponent,
     NotfoundComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

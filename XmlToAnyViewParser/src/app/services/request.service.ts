@@ -18,28 +18,28 @@ export class RequestService {
 		this._headers.set('Content-Type', 'application/json');
 	}
 	get(uri: any, params?: Object, external?: boolean): Observable<any> {
-		if(!external) this._headers.set('access_token', this.sessionService.access_token);
+		if(!external) this._headers.set('Authorization', this.sessionService.access_token);
 		uri = typeof uri == 'object' ? uri.join('/') : uri;
 		return this._http.get((external ? '' : environment.base_uri) + uri, {body: '', headers: (external ? undefined : this._headers), search: this.objToGet(params)})
 			.map(this.extractData)
 			.catch(this.handleError);
 	}
 	post(uri: any, params: Object = {}): Observable<any> {
-		this._headers.set('access_token', this.sessionService.access_token);
+		this._headers.set('Authorization', this.sessionService.access_token);
 		uri = typeof uri == 'object' ? uri.join('/') : uri;
 		return this._http.post(environment.base_uri + uri, JSON.stringify(params),{headers: this._headers})
 			.map(this.extractData)
 			.catch(this.handleError);
 	}
 	put(uri: any, params: Object = {}): Observable<any> {
-		this._headers.set('access_token', this.sessionService.access_token);
+		this._headers.set('Authorization', this.sessionService.access_token);
 		uri = typeof uri == 'object' ? uri.join('/') : uri;
 		return this._http.put(environment.base_uri + uri, JSON.stringify(params),{headers: this._headers})
 			.map(this.extractData)
 			.catch(this.handleError);
 	}
 	remove(uri: any, params?: Object): Observable<any> {
-		this._headers.set('access_token', this.sessionService.access_token);
+		this._headers.set('Authorization', this.sessionService.access_token);
 		uri = typeof uri == 'object' ? uri.join('/') : uri;
 		return this._http.delete(environment.base_uri + uri, {headers: this._headers, search: this.objToGet(params)})
 			.map(this.extractData)
@@ -71,7 +71,7 @@ export class RequestService {
 			uri = typeof uri == 'object' ? uri.join('/') : uri;
 			xhr.open(reqType.toUpperCase(), environment.base_uri + uri, true);
 			xhr.setRequestHeader('X-Requested-With','XMLHttpRequest');
-			xhr.setRequestHeader('access_token', this.sessionService.access_token);
+			xhr.setRequestHeader('Authorization', this.sessionService.access_token);
 			xhr.send(formData);
 		});
 	}

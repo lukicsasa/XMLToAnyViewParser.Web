@@ -6,18 +6,23 @@ import { SessionService } from "./session.service";
 import { Observable } from "rxjs/Observable";
 
 @Injectable()
-export class UserService {
+export class UserService {  
+
 
   constructor(private requestService: RequestService, private sessionService: SessionService, private cookieService: CookieService) { }
 
-  login = (email: string, password: string) => {
-    return this.requestService.post('login', {email: email, password: password})
-      .flatMap((response : {user: IUser, token: string}) => {
-        this.sessionService.initSession(response.token, response.user);
+  login = (username: string, password: string) => {
+    return this.requestService.post('login', { username: username, password: password, viewModelType: 'login' })
+      .flatMap((response: { data : { user: IUser, token: string }}) => {
+        this.sessionService.initSession(response.data.token, response.data.user);
         return Observable.create(observer => {
-            observer.next(response);
-            observer.complete();
-        });  
+          observer.next(response);
+          observer.complete();
+        });
       });
   };
+
+  register = (user : IUser) => {
+    return this.requestService.post('register', {...user, viewModelType: 'register' });
+  }
 }
