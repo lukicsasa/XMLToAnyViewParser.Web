@@ -16,6 +16,10 @@ import { SessionService } from "./services/session.service";
 import { CookieService } from "angular2-cookie/services/cookies.service";
 import { NotfoundComponent } from "./components/notfound/notfound.component";
 import { RegisterComponent } from './components/register/register.component';
+import { ParserService } from "./services/parser.service";
+import { UserService } from "./services/user.service";
+import { ErrorComponent } from "./components/error/error.component";
+import { DataStorageService } from "./services/datastore.service";
 
 
 @NgModule({
@@ -27,6 +31,7 @@ import { RegisterComponent } from './components/register/register.component';
     AlertComponent,
     NotfoundComponent,
     RegisterComponent,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,7 +39,7 @@ import { RegisterComponent } from './components/register/register.component';
     HttpModule,
     NgbModule.forRoot()
   ],
-  providers: [AlertService,AuthGuard,SessionService,RequestService,CookieService],
+  providers: [DataStorageService,AlertService,AuthGuard,SessionService,RequestService,CookieService, UserService, ParserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

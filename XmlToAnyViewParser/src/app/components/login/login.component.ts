@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from "../../services/user.service";
 import { Router } from "@angular/router";
 import { SessionService } from "../../services/session.service";
+import { UserService } from "../../services/user.service";
 import { ParserService } from "../../services/parser.service";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers: [UserService, ParserService]
 })
 export class LoginComponent implements OnInit {
 

@@ -9,11 +9,12 @@ import {AlertService} from "./alert.service";
 import {SessionService} from "./session.service";
 import {Router} from "@angular/router";
 import {environment} from "../../environments/environment";
+import { DataStorageService } from "./datastore.service";
 
 @Injectable()
 export class RequestService {
 	public _headers: Headers;
-	constructor (private _http: Http, private alertService: AlertService, private sessionService: SessionService, private router: Router) {
+	constructor (private _http: Http, private alertService: AlertService, private sessionService: SessionService, private router: Router, private dataStorageService: DataStorageService) {
 		this._headers = new Headers();
 		this._headers.set('Content-Type', 'application/json');
 	}
@@ -87,7 +88,12 @@ export class RequestService {
 	};
 	private handleError = (error: any) => {
 		let message = 'Error';
-		if(error.status == 401) {
+		this.dataStorageService.prevRoute = this.router.url;
+		if(error.status === 0) {
+			this.dataStorageService.error = "Can't connect to server.";
+			this.router.navigateByUrl('/error');
+		}
+		else if(error.status === 401) {
 			this.sessionService.logout();
 			this.router.navigate([this.sessionService.getDeafultNavRoute()]);
 		} else {

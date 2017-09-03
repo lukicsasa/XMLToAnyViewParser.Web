@@ -16,4 +16,8 @@ export class ParserService {
   getRegisterPage = () => {
     return this.requestService.get('parser', { client: 'web', isLogin: false });
   };
+
+  getHomePage = () => {
+    return this.requestService.get('parser', { client: 'web', view: 'home' });
+  };
 }

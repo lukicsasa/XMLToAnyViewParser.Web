@@ -9,8 +9,7 @@ import { AlertService } from "../../services/alert.service";
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css'],
-  providers: [UserService, ParserService]
+  styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
 
@@ -28,7 +27,7 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  handleSubmit = (e) => {
+  handleSubmit(e) {
     e.preventDefault();
     e.stopPropagation();
 
