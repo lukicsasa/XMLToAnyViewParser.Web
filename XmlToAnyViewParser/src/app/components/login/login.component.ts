@@ -34,8 +34,6 @@ export class LoginComponent implements OnInit {
     let username = (<HTMLInputElement>document.getElementById('username')).value;
     let password = (<HTMLInputElement>document.getElementById('password')).value;
 
-    console.log('username ' + username, 'password :' + password);
-
     this._userService.login(username, password).subscribe(r => {
       this._router.navigate([this.sessionService.getDeafultNavRoute()]);   
      });

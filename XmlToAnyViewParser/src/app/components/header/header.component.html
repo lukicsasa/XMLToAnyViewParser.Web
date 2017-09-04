@@ -7,7 +7,7 @@
       <li class="nav-item"><a class="nav-link" [routerLink]="['/home']" [routerLinkActive]="['active']">Home</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Log out</a></li>
+      <li class="nav-item link" (click)="logout()"><a class="nav-link"><span class="glyphicon glyphicon-log-in"></span> Log out</a></li>
     </ul>
   </div>
 </nav>

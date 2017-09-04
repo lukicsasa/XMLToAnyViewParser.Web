@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  handleSubmit(e) {
+  handleSubmit = (e) => {
     e.preventDefault();
     e.stopPropagation();
 
